@@ -56,3 +56,4 @@ F:\apps\TennisScorer\obj\Debug\net8.0\refint\TennisScoring.dll
 F:\apps\TennisScorer\obj\Debug\net8.0\TennisScoring.pdb
 F:\apps\TennisScorer\obj\Debug\net8.0\TennisScoring.genruntimeconfig.cache
 F:\apps\TennisScorer\obj\Debug\net8.0\ref\TennisScoring.dll
+F:\apps\TennisScorer\obj\Debug\net8.0\TennisScoring.sourcelink.json

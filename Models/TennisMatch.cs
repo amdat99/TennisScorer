@@ -1,3 +1,4 @@
+using TennisScoring.Interfaces;
 namespace TennisScoring.Models;
 public class MatchScore
 {   
@@ -5,23 +6,22 @@ public class MatchScore
     public int PlayerBSets { get; set; } = 0;
 }
 
-public class MatchScoreList
+public delegate void MatchWinnerSetEventHandler(object sender, string winner);
+
+public class TennisMatchScoreList(int setsToWin) : IMatchScoreList
 {
-    public List<MatchScore> Scores { get; private set; } = [];
+    public event MatchWinnerSetEventHandler? MatchWinnerSet;
+    public List<MatchScore> Scores { get; private set; } = [new MatchScore()];
 
-    public string? WinnerPlayer { get; set; } = null;
+    private bool IsMatchOver = false;
 
-    public MatchScoreList()
-    {
-        Scores = [new MatchScore()];
-    }
+    private readonly int SetsToWin = setsToWin;
+
     public void StartNewMatch()
     {
         CheckWinnerAndSetWinnerIfAny();
-
-        if(WinnerPlayer == null)
+        if(!IsMatchOver)
         {
-        
             Scores.Add(new MatchScore());
         }
     }   
@@ -44,21 +44,28 @@ public class MatchScoreList
         if(Scores.Count > 1)
         {
             //check if player A has won 2 matches
-            if(Scores.Where(x => x.PlayerASets >= 2).Count() == 2)
+            if(Scores.Where(x => x.PlayerASets >= SetsToWin).Count() == SetsToWin)
             {
-                WinnerPlayer = "A";
+                IsMatchOver = true;
+                OnMatchWinnerSet("A");
                
             }
             //check if player B has won 2 matches
-            else if(Scores.Where(x => x.PlayerBSets >= 2).Count() == 2)
+            else if(Scores.Where(x => x.PlayerBSets >= SetsToWin).Count() == SetsToWin)
             {
-                WinnerPlayer = "B";
+                IsMatchOver = true;
+                OnMatchWinnerSet("B");
             }
         }
+    }
+    protected virtual void OnMatchWinnerSet(string winner)
+    {
+        MatchWinnerSet?.Invoke(this, winner);
     }
     public void ResetMatchList()
     {
         Scores = [new MatchScore()];
+        IsMatchOver = false;
     }
 }
 

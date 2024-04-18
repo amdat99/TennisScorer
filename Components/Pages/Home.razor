@@ -1,31 +1,29 @@
 ﻿@page "/"
 @using TennisScoring.Models
+@using TennisScoring.Interfaces
 
 @rendermode InteractiveServer
 
 <PageTitle>Tennis scores</PageTitle>
 
 <div class="container d-flex justify-content-center align-items-center">
-    <div class="col-md-6 card p-3 text-center h-100" style="min-height: calc(95vh - 20px);">
+    <div class="col-md-6 col-12 card p-3 text-center h-100" style="min-height: calc(95vh - 20px);">
         <h1 class="text-weight-bold">MATCH SCORES</h1>
         <hr />
-
         <h2>@game.PlayerA.Name - @game.PlayerB.Name</h2>
-
         <div class="mt-3 text-center overflow-auto" style="max-height: 70vh;">
             @foreach (var score in @game.GetMatchScores())
             {
                 <h1>@score.PlayerASets - @score.PlayerBSets</h1>
             }
-            @if (@game.GetWinner() != null)
+            @if (@game.Winner != null)
             {
-                <h1>Winner: @game.GetWinner()</h1>
+                <h1>Winner: @game.Winner</h1>
                 <button class="btn btn-primary" @onclick="game.ResetAll">Reset</button>
             }
         </div>
     </div>
-
-    <div class="col-md-6 ml-3 h-100" style="margin-left: 40px; min-height: calc(95vh - 20px);">
+    <div class="col-md-6 col-12 ml-3 h-100" style="margin-left: 40px; min-height: calc(95vh - 20px);">
         <div class="card p-3 mb-4 text-center">
             <h2 class="text-weight-bold">Current Set</h2>
             <h1 style="font-size: 10vh" class="text-weight-bold">@game.GetPlayerASets() - @game.GetPlayerBSets()</h1>
@@ -45,5 +43,5 @@
 </div>
 
 @code {
-private Game game = new Game("Player A", "Player B", new MatchScoreList());
+    private IGame game = new TennisGame("Player A", "Player B", new TennisMatchScoreList(2));
 }

@@ -1,9 +1,12 @@
+using TennisScoring.Interfaces;
 namespace TennisScoring.Models;
-public class Set(MatchScoreList matchScoreList)
+
+
+public class TennisSet(TennisMatchScoreList matchScoreList) : IGameSet
 {
     public int PlayerASets { get; set; }
     public int PlayerBSets { get; set; }
-    private readonly MatchScoreList _matchScoreList = matchScoreList;
+    private readonly TennisMatchScoreList _matchScoreList = matchScoreList;
 
     public void AddSetToPlayerA()
     {
