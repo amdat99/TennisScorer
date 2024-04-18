@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "f:\\apps\\TennisScorer\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TennisScoring.bundle.scp.css",
+      "PackagePath": "staticwebassets\\TennisScoring.bundle.scp.css"
+    },
+    {
+      "Id": "f:\\apps\\TennisScorer\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "f:\\apps\\TennisScorer\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "f:\\apps\\TennisScorer\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "f:\\apps\\TennisScorer\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TennisScoring.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.TennisScoring.props",
+      "PackagePath": "build\\TennisScoring.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.TennisScoring.props",
+      "PackagePath": "buildMultiTargeting\\TennisScoring.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.TennisScoring.props",
+      "PackagePath": "buildTransitive\\TennisScoring.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
