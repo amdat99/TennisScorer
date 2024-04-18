@@ -21,6 +21,10 @@
                 <h1>Winner: @game.Winner</h1>
                 <button class="btn btn-primary" @onclick="game.ResetAll">Reset</button>
             }
+            @if (@game.ErrorMessage != null)
+            {
+                <h1 class="text-danger mt-3">@game.ErrorMessage</h1>
+            }
         </div>
     </div>
     <div class="col-md-6 col-12 ml-3 h-100" style="margin-left: 40px; min-height: calc(95vh - 20px);">

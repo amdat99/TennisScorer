@@ -7,6 +7,8 @@ public class TennisGame : IGame
     public IPlayer PlayerB { get; set; }
     private readonly TennisMatchScoreList _matchScoreList;
     private readonly TennisSet _TennisSet;
+
+    public string? ErrorMessage { get; private set; } = null;
     public TennisGame(string playerAName, string playerBName, TennisMatchScoreList matchScoreList)
     {
         PlayerA = new TennisPlayer { Name = playerAName };
@@ -49,6 +51,8 @@ public class TennisGame : IGame
             Console.WriteLine(ex.Message);
             //Rollback changes if an exception occurs
             RollbackStateChanges(CurPlayer, CurrentSets, CurrentScoreList, playerType); 
+            ErrorMessage = "An error occured while adding point to player";
+            Task.Delay(5000).ContinueWith(_ => ErrorMessage = null);
         }
     }
 

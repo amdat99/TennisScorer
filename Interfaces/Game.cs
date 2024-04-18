@@ -13,4 +13,6 @@ public interface IGame
     public IPlayer PlayerB { get; set; }
 
     public string? Winner { get; }
+
+    public string? ErrorMessage { get; }
 }
