@@ -1,8 +1,7 @@
 namespace TennisScoring.Models;
-
 public class Game
 {   
-     public Player PlayerA { get; set; }
+    public Player PlayerA { get; set; }
     public Player PlayerB { get; set; }
     private readonly MatchScoreList _matchScoreList;
     private readonly Set _set;
@@ -46,7 +45,7 @@ public class Game
         try
         {
             player.Points++;
-            player.TennisScore = SetTennisScoreFromPoints(PlayerA.Points, playerType);
+            player.TennisScore = SetTennisScoreFromPoints(player.Points, playerType);
             CheckIfGameWon();
         }
         catch (Exception ex)
@@ -56,18 +55,18 @@ public class Game
         }
     }
 
-    private void RollbackStateChanges(Player player, int CurrentSets, List<MatchScore> CurrentScoreList, string playerType)
+    private void RollbackStateChanges(Player player, int currentSets, List<MatchScore> CurrentScoreList, string playerType)
     {
         if( playerType == "A")
         {
             PlayerA = player;
-            _set.PlayerASets = CurrentSets;
+            _set.PlayerASets = currentSets;
         
         } 
         else
         {
             PlayerB = player;
-            _set.PlayerBSets = CurrentSets;
+            _set.PlayerBSets = currentSets;
         }
 
         _matchScoreList.SetList(CurrentScoreList);

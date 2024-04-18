@@ -41,7 +41,7 @@ public class MatchScoreList
 
     public void CheckWinnerAndSetWinnerIfAny()
     {
-        if(Scores.Count >= 2)
+        if(Scores.Count > 1)
         {
             //check if player A has won 2 matches
             if(Scores.Where(x => x.PlayerASets >= 2).Count() == 2)
